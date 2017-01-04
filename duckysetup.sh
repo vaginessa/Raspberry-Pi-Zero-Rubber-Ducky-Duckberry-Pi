@@ -15,14 +15,14 @@ sed -i -e "\$adtoverlay=dwc2" /boot/config.txt
 
 
 ##Install git and download rspiducky
-wget https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/usleep.c https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/hid-gadget-test.c https://github.com/dee-oh-double-gee/rspiducky/raw/master/g_hid.ko https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/duckpi.sh
+wget https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/usleep.c https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/hid-gadget-test.c https://github.com/dee-oh-double-gee/rspiducky/raw/master/g_hid.ko https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/duckpi.sh https://github.com/dee-oh-double-gee/rspiducky/raw/master/usleep https://github.com/dee-oh-double-gee/rspiducky/raw/master/hid-gadget-test
 
 
 ##Compile hid-gadget-test
-gcc hid-gadget-test.c -o hid-gadget-test
+##gcc hid-gadget-test.c -o hid-gadget-test
 
 ##Compile usleep 
-make usleep
+##make usleep
 
 ##Make all nessisary files executeable
 cd /home/pi
