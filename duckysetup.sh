@@ -28,7 +28,7 @@ make usleep
 cd /home/pi
 chmod 755 hid-gadget-test.c duckpi.sh usleep.c g_hid.ko usleep hid-gadget-test
 
-cp g_hid.ko /lib/modules/4.4.0+/kernel/drivers/usb/gadget/legacy
+cp g_hid.ko /lib/modules/$(uname -r)/kernel/drivers/usb/gadget/legacy
 
 cat <<'EOF'>>/etc/modules
 dwc2
