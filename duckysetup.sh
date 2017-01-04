@@ -15,8 +15,8 @@ sed -i -e "\$adtoverlay=dwc2" /boot/config.txt
 
 
 ##Install git and download rspiducky
-apt-get install -y git
-git clone https://github.com/dee-oh-double-gee/rspiducky /home/pi
+wget https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/usleep.c https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/hid-gadget-test.c https://github.com/dee-oh-double-gee/rspiducky/raw/master/g_hid.ko https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/duckpi.sh
+
 
 ##Compile hid-gadget-test
 gcc hid-gadget-test.c -o hid-gadget-test
@@ -26,7 +26,7 @@ make usleep
 
 ##Make all nessisary files executeable
 cd /home/pi
-chmod 755 hid-gadget-test.c duckpi.sh usleep.c g_hid.ko
+chmod 755 hid-gadget-test.c duckpi.sh usleep.c g_hid.ko usleep hid-gadget-test
 
 cp g_hid.ko /lib/modules/4.4.0+/kernel/drivers/usb/gadget/legacy
 
