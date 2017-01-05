@@ -8,6 +8,7 @@ if [ $EUID -ne 0 ]; then
 	exit
 fi
 
+apt-get install rpi-update
 BRANCH=next rpi-update c053625
 
 ## dwc2 drivers
