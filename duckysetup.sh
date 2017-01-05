@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script is used to setup rspiducky by theresalu on github
 # This script will only work on the Raspberry Pi Zero
-
+# It also only works with this image: http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-02-29/
 if [ $EUID -ne 0 ]; then
 	echo "You must use sudo to run this script:"
 	echo "sudo $0 $@"
