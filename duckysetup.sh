@@ -8,7 +8,7 @@ if [ $EUID -ne 0 ]; then
 	exit
 fi
 
-apt-get update
+BRANCH=next rpi-update c053625
 
 ## dwc2 drivers
 sed -i -e "\$adtoverlay=dwc2" /boot/config.txt
@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/usleep
 cd /home/pi
 chmod 755 hid-gadget-test.c duckpi.sh usleep.c g_hid.ko usleep hid-gadget-test
 
-\cp g_hid.ko /lib/modules/$(uname -r)/kernel/drivers/usb/gadget/legacy
+\cp g_hid.ko /lib/modules/4.4.0+/kernel/drivers/usb/gadget/legacy
 
 cat <<'EOF'>>/etc/modules
 dwc2
