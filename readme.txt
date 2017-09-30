@@ -1,108 +1,79 @@
-Duckberry Pi
-Author: Jeff L. (Renegade_R - renegade_r65@hotmail.com)
-Version 0.5
+# Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi
 
+Version 1.0
+
+A £10 Rubber Ducky USB HID!
+
+## Introduction
+
+DuckBerry Pi is a Raspberry Pi distro based on Minibian which allows the Raspberry Pi Zero to behave similar to a USB Rubber Ducky (https://hakshop.com/products/usb-rubber-ducky-deluxe): a small device USB device which emulates a keyboard and automates key entry. Ducky scripts (uncompiled) which are made for the USB Rubber Ducky can be used with the Duckyberry Pi without modification. This can be useful for automating computer tasks, penetration testing machines, playing pranks, or just fun (by default plugging in an untouched Duckberry Pi image will open a Youtube video). Since it is recognized as a standard keyboard, this tool is compatible with Windows, Mac OS, Linux, Android, PlayStation 4, and anything that supports a USB keyboard.
+
+## Getting Started
+
+These instructions will help you setup and install your own Duckberry
+
+### Instalation
+
+1) Download the ISO for [Rasbian Lite 2016-02-29](http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-02-29/)
+
+2) Burn the ISO to the Micro SD Card - if you can't do this, [Google can help!](https://www.google.co.uk/search?q=burn+raspbian+lite+to+sd+card)
+
+3) Version 1 includes a setup script that automates the setting up from version 0.5. Download this using wget.
+    ``` bash
+    wget https://raw.githubusercontent.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/master/duckysetup.sh
+    ```
+
+4) Make the script executable
+    ``` bash
+        chmod +x duckysetup.sh
+    ```
+   
+5) Run the script
+   ``` bash
+       ./duckysetup.sh
+   ```
+   
+### Using Duckberry
+   
+6) Turn off the PI, plug it into the target host machine via USB cable in the peripheral micro USB port, NOT THE POWER PORT.  A power cord is not required as the Pi Zero will take power directly from the host machine.
+    
+7) Watch the script execute on the host machine - You may have to plug it in twice, the first time installs drivers.
+
+8) Once the video opens (defult script) take the SD card out of the PI, plug it into any machince with a USB SD card adaptor and then change /boot/payload.dd file to any DuckyScript Payload.
+
+## Duckyscript
+
+There are lots of [ready made ducky scripts here](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads] and you can make your own with [this genorator](https://ducktoolkit.com/). Just make sure you use uncompiled Ducky Script .dd extension not .bin.
+
+## Credits
+
+Authors: Jeff L.
+       : Dee-oh-double-gee
+       : Theresalu
+       : Ossiozac
+       
 Credits to Original Authors:
 DroidDucky by Andrej Budincevic (https://github.com/anbud/DroidDucky)
 hardpass by girst (https://github.com/girst/hardpass)
 
-DuckBerry Pi is a Raspberry Pi distro based on Minibian which allows the Raspberry Pi Zero to behave similar to a USB Rubber Ducky: a small device USB device which emulates a keyboard and automates key entry.  Ducky scripts (uncompiled) which are made for the USB Rubber Ducky can be used with the Duckyberry Pi without modification.  This can be useful for automating computer tasks, penetration testing machines, playing pranks, or just fun (by default plugging in an untouched Duckberry Pi image will open a Youtube video).  Since it is recognized as a standard keyboard, this tool is compatible with Windows, Mac OS, Linux, Android, PlayStation 4, and anything that supports a USB keyboard.  Credits go all to the original authors, I merely ported the code to the Raspberry Pi and filled in a few gaps that were missing between Android and Raspbian.
+## MIT License
 
-How to Create this Manually:
+Copyright (c) [2017] [Zac Orehawa]
 
-1) Flash the latest Raspbian Jessie image to an SD card
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-2) Update the kernel of the Raspberry Pi which has USB Gadget support.  We are updating specifically to 4.4.0 because the driver is only compatible with it:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-BRANCH=next rpi-update c053625
-
-3) Copy all the files (hid-gadget-test.c, duckpi.sh, usleep.c, g_hid.ko) to /home/pi
-
-4) Compile the hid-gadget-test program, this handles moving the text to the Human Interface Device driver:
-
-gcc hid-gadget-test.c -o hid-gadget-test
-
-5) Compile usleep, this is a basic function which is not natively supported in Raspbian and is used to account for delays in the program:
-
-make usleep
-
-6) Ensure all files and scripts are executable (chmod 755 <file>)
-
-7) Copy the driver into the kernel drivers directory:
-
-cp g_hid.ko /lib/modules/4.4.0+/kernel/drivers/usb/gadget/legacy
-
-8) Activate the dwc2 drivers which allows the device to function in host mode when not connected to a PC:
-
-echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
-
-9) Place the dwc2 in the driver modules to boot with the OS:
-
-echo "dwc2" | sudo tee /etc/modules
-
-10) Place the Gadget HID (Human Interface Device) driver module to boot with the OS:
-echo "g_hid" | sudo tee -a /etc/modules
-
-11) Copy the following into your /etc/rc.local file.  This allows you to place a "payload.dd" script in the "boot" drive that appears when you plug the SD card into a computer, it will then copy the file and format it for Unix (because Windows machines format the text differently):
-
-sleep 3
-cat /boot/payload.dd > /home/pi/payload.dd
-sleep 1
-tr -d '\r' < /home/pi/payload.dd > /home/pi/payload2.dd
-sleep 1
-/home/pi/duckpi.sh /home/pi/payload2.dd
-
-12) Copy the actual payload into /boot, this directory can also be accessed in Windows by simply placing your micro SD card into a card reader and copying it to the drive that appears.  Here are two sample payloads, save it as a text file with the file name "payload.dd".
-
-Open Youtube Video
-
-GUI r
-DELAY 50
-STRING www.youtube.com/watch?v=dQw4w9WgXcQ
-ENTER
-DELAY 1000
-F11
-
-Minimize to Desktop, Take Screenshot, Hide Icons, Use Screenshot as Wallpaper
-
-GUI d
-DELAY 500
-PRINTSCREEN
-DELAY 100
-MENU
-DELAY 300
-STRING V
-DELAY 300
-STRING D
-DELAY 300
-GUI r
-DELAY 700
-STRING mspaint
-ENTER
-DELAY 1200
-CTRL v
-DELAY 500
-CTRL s
-DELAY 1000
-STRING %userprofile%\a.bmp
-ENTER
-DELAY 500
-ALT f
-DELAY 400
-STRING K
-DELAY 100
-STRING F
-DELAY 1000
-ALT F4
-DELAY 300
-GUI d
-
-13) Place SD card into the Raspberry Pi Zero, plug it into the target host machine via USB cable in the peripheral micro USB port, NOT THE POWER PORT.  A power cord is not required as the Pi Zero will take power directly from the host machine.
-
-14) Watch the script execute on the host machine
-
-Note: You may have to insert it two times: the first time is due to the driver installation
-
-Resources:
-Premade Ducky Scripts: https://github.com/hak5darren/USB-Rubber-Ducky/wiki
-Original USB Rubber Ducky: http://usbrubberducky.com/#!index.md
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
