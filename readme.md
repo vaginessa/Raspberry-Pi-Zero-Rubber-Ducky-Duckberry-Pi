@@ -6,6 +6,12 @@ A £10 Rubber Ducky USB HID!
 
 ## Introduction
 
+      _      _      _      USB       _      _      _
+   __(.)< __(.)> __(.)=   Duck-   >(.)__ <(.)__ =(.)__
+   \___)  \___)  \___)    Berry!    (___/  (___/  (___/ 
+
+The USB Rubber Ducky is a Human Interface Device programmable with a simple scripting language allowing penetration testers to quickly and easily craft and deploy security auditing payloads that mimic human keyboard input. Tools and payloads can be found at usbrubberducky.com. Quack!
+
 DuckBerry Pi is a Raspberry Pi distro. based on Minibian which allows the Raspberry Pi Zero to behave similar to a [USB Rubber Ducky](https://hakshop.com/products/usb-rubber-ducky-deluxe): a small device USB device which emulates a keyboard and automates key entry.
 Ducky scripts (uncompiled) which are made for the USB Rubber Ducky can be used with the Duckyberry Pi without modification. This can be useful for automating computer tasks, penetration testing machines, playing pranks, or just fun (by default plugging in an untouched Duckberry Pi image will open a Youtube video).
 Since it is recognised as a standard keyboard, this tool is compatible with Windows, Mac OS, Linux, Android, PlayStation 4, and anything that supports a USB keyboard.
