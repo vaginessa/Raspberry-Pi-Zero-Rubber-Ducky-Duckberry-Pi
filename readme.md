@@ -5,10 +5,11 @@ Version 1.0
 A £10 Rubber Ducky USB HID!
 
 ## Introduction
-
-      _      _      _      USB       _      _      _
-   __(.)< __(.)> __(.)=   Duck-   >(.)__ <(.)__ =(.)__
+```
+   _      _      _         USB         _      _      _
+   __(.)< __(.)> __(.)=   Duck-    >(.)__ <(.)__ =(.)__
    \___)  \___)  \___)    Berry!    (___/  (___/  (___/ 
+```
 
 The USB Rubber Ducky is a Human Interface Device programmable with a simple scripting language allowing penetration testers to quickly and easily craft and deploy security auditing payloads that mimic human keyboard input. Tools and payloads can be found at usbrubberducky.com. Quack!
 
