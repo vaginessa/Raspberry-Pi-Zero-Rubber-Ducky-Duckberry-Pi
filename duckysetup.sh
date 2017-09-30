@@ -1,7 +1,4 @@
 #!/bin/bash
-# This script is used to setup rspiducky by theresalu on github
-# This script will only work on the Raspberry Pi Zero
-# It also only works with this image (as far as I am aware): http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-02-29/
 if [ $EUID -ne 0 ]; then
 	echo "You must use sudo to run this script:"
 	echo "sudo $0 $@"
@@ -14,16 +11,8 @@ BRANCH=next rpi-update c053625
 ## dwc2 drivers
 sed -i -e "\$adtoverlay=dwc2" /boot/config.txt
 
-
 ##Install git and download rspiducky
-wget https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/usleep.c https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/hid-gadget-test.c https://github.com/dee-oh-double-gee/rspiducky/raw/master/g_hid.ko https://raw.githubusercontent.com/dee-oh-double-gee/rspiducky/master/duckpi.sh https://github.com/dee-oh-double-gee/rspiducky/raw/master/usleep https://github.com/dee-oh-double-gee/rspiducky/raw/master/hid-gadget-test
-
-
-##Compile hid-gadget-test
-##gcc hid-gadget-test.c -o hid-gadget-test
-
-##Compile usleep 
-##make usleep
+wget --no-check-certificate https://raw.githubusercontent.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/master/LICENSE https://raw.githubusercontent.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/master/duckpi.sh https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/g_hid.ko https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/hid-gadget-test https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/hid-gadget-test.c https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/readme.md https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/usleep https://github.com/ossiozac/Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi/raw/master/usleep.c
 
 ##Make all nessisary files executeable
 cd /home/pi
@@ -35,7 +24,6 @@ cat <<'EOF'>>/etc/modules
 dwc2
 g_hid
 EOF
-
 
 ##Make it so that you can put the payload.dd in the /boot directory
 sed -i '/exit/d' /etc/rc.local
@@ -50,7 +38,7 @@ sleep 1
 exit 0
 EOF
 
-
+##Making the first payload
 cat <<'EOF'>>/boot/payload.dd
 GUI r
 DELAY 50
