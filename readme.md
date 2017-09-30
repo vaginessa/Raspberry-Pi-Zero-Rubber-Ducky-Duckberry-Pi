@@ -6,7 +6,7 @@ A £10 Rubber Ducky USB HID!
 
 ## Introduction
 
-DuckBerry Pi is a Raspberry Pi distro based on Minibian which allows the Raspberry Pi Zero to behave similar to a USB Rubber Ducky (https://hakshop.com/products/usb-rubber-ducky-deluxe): a small device USB device which emulates a keyboard and automates key entry. Ducky scripts (uncompiled) which are made for the USB Rubber Ducky can be used with the Duckyberry Pi without modification. This can be useful for automating computer tasks, penetration testing machines, playing pranks, or just fun (by default plugging in an untouched Duckberry Pi image will open a Youtube video). Since it is recognized as a standard keyboard, this tool is compatible with Windows, Mac OS, Linux, Android, PlayStation 4, and anything that supports a USB keyboard.
+DuckBerry Pi is a Raspberry Pi distro based on Minibian which allows the Raspberry Pi Zero to behave similar to a [USB Rubber Ducky](https://hakshop.com/products/usb-rubber-ducky-deluxe): a small device USB device which emulates a keyboard and automates key entry. Ducky scripts (uncompiled) which are made for the USB Rubber Ducky can be used with the Duckyberry Pi without modification. This can be useful for automating computer tasks, penetration testing machines, playing pranks, or just fun (by default plugging in an untouched Duckberry Pi image will open a Youtube video). Since it is recognized as a standard keyboard, this tool is compatible with Windows, Mac OS, Linux, Android, PlayStation 4, and anything that supports a USB keyboard.
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ These instructions will help you setup and install your own Duckberry
 
 ## Duckyscript
 
-There are lots of [ready made ducky scripts here](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads] and you can make your own with [this genorator](https://ducktoolkit.com/). Just make sure you use uncompiled Ducky Script .dd extension not .bin.
+There are lots of [ready made ducky scripts here](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads) and you can make your own with [this genorator](https://ducktoolkit.com/). Just make sure you use uncompiled Ducky Script .dd extension not .bin.
 
 ## Credits
 
