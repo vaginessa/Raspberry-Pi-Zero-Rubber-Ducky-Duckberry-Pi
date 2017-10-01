@@ -4,7 +4,8 @@ if [ $EUID -ne 0 ]; then
 	echo "sudo $0 $@"
 	exit
 fi
-
+apt-get update
+apt-get upgrade -y
 apt-get install rpi-update
 BRANCH=next rpi-update c053625
 
