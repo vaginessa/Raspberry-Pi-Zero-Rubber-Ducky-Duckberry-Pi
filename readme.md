@@ -39,7 +39,7 @@ These instructions will help you setup and install your own Duckberry
    
 5) Run the script
    ``` bash
-       ./duckysetup.sh
+       sudo ./duckysetup.sh
    ```
    
 ### Using Duckberry
