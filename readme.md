@@ -1,6 +1,6 @@
 # Raspberry-Pi-Zero-Rubber-Ducky-Duckberry-Pi
 
-Version 1.0
+Version 1.1
 
 A £10 Rubber Ducky USB HID!
 
@@ -23,7 +23,7 @@ These instructions will help you setup and install your own Duckberry
 
 ### Installation
 
-1) Download the ISO for [Rasbian Lite 2016-02-29](http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-02-29/)
+1) Download the ISO for [Rasbian Lite 2016-02-29](http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-02-29/) Other versions may work but I have only tested with this.
 
 2) Burn the ISO to the Micro SD Card - if you can't do this, [Google can help!](https://www.google.co.uk/search?q=burn+raspbian+lite+to+sd+card)
 
@@ -48,11 +48,13 @@ These instructions will help you setup and install your own Duckberry
     
 7) Watch the script execute on the host machine - You may have to plug it in twice, the first time installs drivers.
 
-8) Once the video opens (default script) take the SD card out of the PI, plug it into any machine with a USB SD card adaptor and then change /boot/payload.dd file to any DuckyScript Payload.
+8) Once the default script runs you can unplug and take the SD card out of the PI, plug it into any machine with a USB SD card adaptor and then change /boot/payload.dd file to any DuckyScript Payload. This is what file the Pi will inject into the target device.
 
 ## Duckyscript
 
 There are lots of [ready made ducky scripts here](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads) and you can make your own with [this generator](https://ducktoolkit.com/). Just make sure you use uncompiled Ducky Script .dd extension not .bin.
+
+A .dd file is a standard .txt file with the extension chanaged. To clear up some confusion, the DuckToolKit will give you an option to download a compiled inject.bin file or a duckycode.txt file. You need to download the duckycode.txt file and change the name/extension to payload.dd and then put it in the /boot part of the SD card so that the Pi can load and run the script.
 
 ## Credits
 
@@ -68,7 +70,7 @@ hardpass by girst (https://github.com/girst/hardpass)
 
 ## MIT License
 
-Copyright (c) [2017] [Zac Orehawa]
+Copyright (c) [2018] [Zac Henry Orehawa]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
