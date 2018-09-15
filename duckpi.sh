@@ -151,7 +151,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	then
 		last_cmd="UNS"
 		((info = info*1000))
-		/home/pi/usleep $info
+		sleep $info
 
 	elif [ "$cmd" == "WINDOWS" -o "$cmd" == "GUI" ] 
 	then
@@ -383,7 +383,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 				else
 					echo "$last_cmd" | hid-gadget-test $kb > /dev/null
 				fi
-				/home/pi/usleep $defdelay
+				sleep $defdelay
 			done
 		fi
 
@@ -391,5 +391,5 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	then
 		echo "($line_num) Parse error: Unexpected $cmd."
 	fi
-	/home/pi/usleep $defdelay
+	sleep $defdelay
 done < "$1"
